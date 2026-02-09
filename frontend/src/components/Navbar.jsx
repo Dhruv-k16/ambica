@@ -51,21 +51,21 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-8 lg:gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 data-testid={`nav-link-${link.label.toLowerCase().replace(' ', '-')}`}
-                className={`text-sm font-medium transition-colors duration-200 relative group ${
+                className={`text-sm font-semibold tracking-wide transition-all duration-300 relative group ${
                   location.pathname === link.path
                     ? 'text-primary'
-                    : 'text-foreground hover:text-primary'
+                    : 'text-foreground hover:text-logo-purple'
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-200 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-logo-purple transition-all duration-300 ${
                     location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
