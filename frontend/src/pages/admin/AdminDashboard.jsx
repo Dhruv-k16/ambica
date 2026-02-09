@@ -43,6 +43,13 @@ const AdminDashboard = () => {
       icon: FileText,
       path: '/admin/content',
       color: 'bg-orange-500'
+    },
+    {
+      title: 'Manage Locations',
+      description: 'Update business address and service areas',
+      icon: Image,
+      path: '/admin/locations',
+      color: 'bg-red-500'
     }
   ];
 
