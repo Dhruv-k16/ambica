@@ -286,7 +286,7 @@ const HomePage = () => {
               <Button
                 data-testid="bottom-cta-btn"
                 size="lg"
-                className="rounded-full bg-primary text-white hover-logo-purple shadow-lg hover:shadow-2xl transition-all duration-300 px-8 py-6 text-base font-semibold"
+                className="rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-2xl transition-all duration-300 px-8 py-6 text-base font-semibold"
               >
                 Get in Touch
               </Button>
