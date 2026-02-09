@@ -114,7 +114,7 @@ const ServicesPage = () => {
             </p>
             <a 
               href="/contact"
-              className="inline-block mt-6 rounded-full bg-primary text-white hover-logo-purple shadow-lg hover:shadow-2xl transition-all duration-300 px-8 py-4 text-base font-semibold"
+              className="inline-block mt-6 rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-2xl transition-all duration-300 px-8 py-4 text-base font-semibold"
             >
               Contact Us
             </a>
