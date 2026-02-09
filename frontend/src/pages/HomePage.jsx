@@ -73,7 +73,7 @@ const HomePage = () => {
             <img
               src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/v0djnxnp_bg-logo.png"
               alt="Ambica Decor Logo"
-              className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mx-auto object-contain drop-shadow-lg"
+              className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto object-contain drop-shadow-2xl"
             />
           </motion.div>
           
