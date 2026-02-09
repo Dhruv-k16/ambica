@@ -52,7 +52,7 @@ const HomePage = () => {
       <section data-testid="hero-section" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
         <div className="absolute inset-0 grain-texture" />
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.08]"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1746044159252-ed0ccafd7b46?auto=format&fit=crop&w=1920')`,
             backgroundSize: 'cover',
@@ -60,43 +60,65 @@ const HomePage = () => {
           }}
         />
         
-        <div className="absolute top-20 right-10 w-32 h-32 border-2 border-primary/20 rounded-full" />
-        <div className="absolute bottom-20 left-10 w-24 h-24 border-2 border-primary/30 rounded-full" />
+        <div className="absolute top-20 right-10 w-32 h-32 border-2 border-primary/20 rounded-full animate-pulse" />
+        <div className="absolute bottom-20 left-10 w-24 h-24 border-2 border-primary/30 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
         
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-8"
           >
             <img
               src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/mpo8r793_LOGO.jpeg"
               alt="Ambica Decor Logo"
-              className="w-32 h-32 mx-auto object-contain mb-6"
+              className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mx-auto object-contain drop-shadow-lg"
             />
-            
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-foreground">
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-normal text-foreground">
               {pageContent.hero_title}
             </h1>
             
-            <p className="font-accent text-2xl sm:text-3xl text-primary">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="font-accent text-2xl sm:text-3xl lg:text-4xl text-primary"
+            >
               {pageContent.tagline}
-            </p>
+            </motion.p>
             
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-medium"
+            >
               {pageContent.hero_subtitle}
-            </p>
+            </motion.p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
+            >
               <Link to="/contact">
                 <Button
                   data-testid="hero-cta-primary"
                   size="lg"
-                  className="rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-6 text-lg font-medium group"
+                  className="rounded-full bg-primary text-white hover-logo-purple shadow-lg hover:shadow-2xl transition-all duration-300 px-8 py-6 text-base font-semibold group"
                 >
                   {pageContent.cta_primary}
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" size={20} />
                 </Button>
               </Link>
               <Link to="/showcase">
@@ -104,12 +126,12 @@ const HomePage = () => {
                   data-testid="hero-cta-secondary"
                   variant="outline"
                   size="lg"
-                  className="rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 px-8 py-6 text-lg"
+                  className="rounded-full border-2 border-primary text-primary hover:bg-logo-purple hover:text-white hover:border-logo-purple transition-all duration-300 px-8 py-6 text-base font-semibold"
                 >
                   {pageContent.cta_secondary}
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
