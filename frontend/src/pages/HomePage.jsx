@@ -202,7 +202,7 @@ const HomePage = () => {
                 data-testid="view-all-services-btn"
                 variant="outline"
                 size="lg"
-                className="rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                className="rounded-full border-2 border-primary text-primary hover:bg-logo-purple hover:text-white hover:border-logo-purple transition-all duration-300 shadow-sm hover:shadow-lg"
               >
                 View All Services
               </Button>
