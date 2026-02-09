@@ -11,6 +11,7 @@ import ManageEvents from '@/pages/admin/ManageEvents';
 import ManageServices from '@/pages/admin/ManageServices';
 import ViewEnquiries from '@/pages/admin/ViewEnquiries';
 import EditContent from '@/pages/admin/EditContent';
+import ManageLocations from '@/pages/admin/ManageLocations';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import '@/App.css';
 
