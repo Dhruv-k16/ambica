@@ -32,6 +32,7 @@ function App() {
           <Route path="/admin/services" element={<ProtectedRoute><ManageServices /></ProtectedRoute>} />
           <Route path="/admin/enquiries" element={<ProtectedRoute><ViewEnquiries /></ProtectedRoute>} />
           <Route path="/admin/content" element={<ProtectedRoute><EditContent /></ProtectedRoute>} />
+          <Route path="/admin/locations" element={<ProtectedRoute><ManageLocations /></ProtectedRoute>} />
           
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
