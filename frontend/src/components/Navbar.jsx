@@ -60,12 +60,12 @@ const Navbar = () => {
                 className={`text-sm font-semibold tracking-wide transition-all duration-300 relative group ${
                   location.pathname === link.path
                     ? 'text-primary'
-                    : 'text-foreground hover:text-logo-purple'
+                    : 'text-foreground hover:text-primary'
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-logo-purple transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
                     location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
