@@ -1,0 +1,128 @@
+{
+  "design_system": {
+    "typography": {
+      "font_family": {
+        "heading": ["Cormorant Garamond", "serif"],
+        "body": ["Manrope", "sans-serif"],
+        "accent": ["Great Vibes", "cursive"]
+      },
+      "google_fonts_url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Great+Vibes&display=swap",
+      "scale": {
+        "h1": "text-5xl md:text-7xl font-light tracking-tight",
+        "h2": "text-4xl md:text-5xl font-normal tracking-tight",
+        "h3": "text-2xl md:text-3xl font-medium",
+        "body": "text-base md:text-lg leading-relaxed text-muted-foreground",
+        "caption": "text-sm tracking-widest uppercase text-muted-foreground"
+      }
+    },
+    "colors": {
+      "palette": {
+        "background": "48 30% 98%", 
+        "foreground": "0 0% 18%",
+        "primary": "40 48% 56%",
+        "primary_foreground": "0 0% 100%",
+        "secondary": "38 20% 88%",
+        "secondary_foreground": "0 0% 18%",
+        "muted": "40 20% 94%",
+        "muted_foreground": "0 0% 40%",
+        "accent": "40 48% 56%",
+        "accent_foreground": "0 0% 100%",
+        "border": "40 20% 85%",
+        "input": "40 20% 85%",
+        "ring": "40 48% 56%"
+      },
+      "usage": {
+        "background": "Ivory (#FDFCF8) - Main page background",
+        "foreground": "Charcoal (#2D2D2D) - Main text",
+        "primary": "Muted Gold (#C5A059) - Buttons, Highlights, Active States",
+        "secondary": "Soft Beige (#E6E2DD) - Section backgrounds, Cards",
+        "accent": "Gold - Icons, Borders"
+      }
+    },
+    "visual_enhancers": {
+      "border_radius": {
+        "default": "0.5rem",
+        "arch": "100px 100px 0 0",
+        "pill": "9999px"
+      },
+      "shadows": {
+        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+        "hover": "0 10px 40px -10px rgba(197, 160, 89, 0.2)"
+      },
+      "textures": {
+        "grain": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")"
+      }
+    }
+  },
+  "components": {
+    "navbar": {
+      "style": "sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl",
+      "logo_text": "font-heading text-2xl font-bold tracking-wide text-primary",
+      "link_style": "text-sm font-medium transition-colors hover:text-primary"
+    },
+    "buttons": {
+      "primary": "rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-6 text-lg font-medium",
+      "outline": "rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 px-8 py-6"
+    },
+    "cards": {
+      "service_card": "group relative overflow-hidden rounded-t-[100px] rounded-b-lg border border-border/50 bg-white p-0 shadow-soft transition-all hover:shadow-hover hover:-translate-y-1",
+      "portfolio_card": "group relative overflow-hidden rounded-lg bg-muted aspect-[3/4] cursor-pointer"
+    },
+    "sections": {
+      "hero": "relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden bg-background text-center",
+      "standard": "py-24 md:py-32 container mx-auto px-4 md:px-6"
+    }
+  },
+  "image_urls": {
+    "hero": {
+      "main_bg": "https://images.unsplash.com/photo-1746044159252-ed0ccafd7b46",
+      "alt": "Luxury Wedding Reception Hall"
+    },
+    "services": {
+      "mandap": "https://images.unsplash.com/photo-1710498689566-868b93f934c4",
+      "reception": "https://images.unsplash.com/photo-1669225445162-beaaa330dc90",
+      "haldi": "https://images.unsplash.com/photo-1710983165044-0cc32d1aab4b",
+      "corporate": "https://images.unsplash.com/photo-1768508951405-10e83c4a2872"
+    },
+    "backgrounds": {
+      "arch_texture": "https://images.unsplash.com/photo-1524228208746-3fce3514fc25",
+      "marigold_field": "https://images.unsplash.com/photo-1759577456683-8df620137ad0"
+    }
+  },
+  "instructions_to_main_agent": {
+    "setup": [
+      "Update `frontend/public/index.html` to include the Google Fonts link in the `<head>`.",
+      "Update `frontend/tailwind.config.js` to extend the theme with the new font families ('heading', 'body', 'accent') and colors.",
+      "Update `frontend/src/index.css` with the HSL color values provided in `design_system.colors.palette`.",
+      "Install `framer-motion` for animations if not present."
+    ],
+    "implementation_rules": [
+      "Use `font-heading` for all H1-H3 tags.",
+      "Use `font-accent` for decorative sub-labels (e.g., 'Est. 2024' or 'Our Story').",
+      "Ensure the 'Arch' border radius is used for Service cards to mimic Rajasthani architecture.",
+      "Use the 'Ivory' background for the body to ensure the Purple logo pops.",
+      "Implement a 'Gold' border on the Navbar to give a premium feel.",
+      "Use `data-testid` on all interactive elements."
+    ]
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: `transition: all`. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add `.App { text-align: center; }` in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯📚🎭🎬🎪🎉🎊🎁🎀🎂🍰🎈🎨🎰💰💵💳🏦💎🪙💸🤑📊📈📉💹🔢🏆🥇 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Examine existing components to understand the project's component patterns before creating new ones",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use `sonner` for toasts"
+  ]
+}
