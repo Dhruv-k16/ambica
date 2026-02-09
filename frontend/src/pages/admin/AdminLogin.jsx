@@ -51,7 +51,7 @@ const AdminLogin = () => {
       >
         <div className="text-center mb-8">
           <img
-            src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/mpo8r793_LOGO.jpeg"
+            src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/v0djnxnp_bg-logo.png"
             alt="Ambica Decor Logo"
             className="w-20 h-20 mx-auto mb-4 object-contain"
           />
