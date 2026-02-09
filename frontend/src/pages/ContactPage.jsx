@@ -207,12 +207,12 @@ const ContactPage = () => {
                   data-testid="submit-enquiry-btn"
                   disabled={loading}
                   size="lg"
-                  className="w-full rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  className="w-full rounded-full bg-primary text-white hover-logo-purple shadow-lg hover:shadow-2xl transition-all duration-300 group font-semibold"
                 >
                   {loading ? 'Submitting...' : (
                     <>
                       Submit Enquiry
-                      <Send className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                      <Send className="ml-2 group-hover:translate-x-2 transition-transform duration-300" size={18} />
                     </>
                   )}
                 </Button>
