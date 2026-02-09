@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className="flex h-20 items-center justify-between">
           <Link to="/" className="flex items-center space-x-3" data-testid="nav-logo">
             <img
-              src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/mpo8r793_LOGO.jpeg"
+              src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/v0djnxnp_bg-logo.png"
               alt="Ambica Decor Logo"
               className="h-14 w-14 object-contain"
             />
