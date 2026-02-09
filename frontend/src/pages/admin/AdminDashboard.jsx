@@ -52,7 +52,7 @@ const AdminDashboard = () => {
         <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img
-              src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/mpo8r793_LOGO.jpeg"
+              src="https://customer-assets.emergentagent.com/job_6da60b51-a53e-4a8b-9a9f-a7f9b38e6720/artifacts/v0djnxnp_bg-logo.png"
               alt="Ambica Decor Logo"
               className="h-12 w-12 object-contain"
             />
