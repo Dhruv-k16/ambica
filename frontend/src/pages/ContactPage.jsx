@@ -207,7 +207,7 @@ const ContactPage = () => {
                   data-testid="submit-enquiry-btn"
                   disabled={loading}
                   size="lg"
-                  className="w-full rounded-full bg-primary text-white hover-logo-purple shadow-lg hover:shadow-2xl transition-all duration-300 group font-semibold"
+                  className="w-full rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-2xl transition-all duration-300 group font-semibold"
                 >
                   {loading ? 'Submitting...' : (
                     <>
