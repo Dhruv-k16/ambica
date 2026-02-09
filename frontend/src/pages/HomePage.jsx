@@ -257,7 +257,7 @@ const HomePage = () => {
                 <Button
                   data-testid="view-portfolio-btn"
                   size="lg"
-                  className="rounded-full bg-primary text-white hover-logo-purple shadow-lg hover:shadow-2xl transition-all duration-300 px-8 font-semibold"
+                  className="rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-2xl transition-all duration-300 px-8 font-semibold"
                 >
                   View Full Portfolio
                 </Button>
