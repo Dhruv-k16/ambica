@@ -4,31 +4,32 @@
 
 @layer base {
   :root {
-    --background: 48 30% 98%;
-    --foreground: 0 0% 18%;
-    --card: 48 30% 98%;
-    --card-foreground: 0 0% 18%;
-    --popover: 48 30% 98%;
-    --popover-foreground: 0 0% 18%;
-    --primary: 40 48% 56%;
+    --background: 38 20% 97%;
+    --foreground: 0 0% 17%;
+    --card: 38 20% 97%;
+    --card-foreground: 0 0% 17%;
+    --popover: 38 20% 97%;
+    --popover-foreground: 0 0% 17%;
+    --primary: 40 48% 53%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 38 20% 88%;
-    --secondary-foreground: 0 0% 18%;
-    --muted: 40 20% 94%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 40 48% 56%;
+    --secondary: 36 27% 81%;
+    --secondary-foreground: 0 0% 17%;
+    --muted: 36 27% 81%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 40 48% 53%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 40 20% 85%;
-    --input: 40 20% 85%;
-    --ring: 40 48% 56%;
+    --border: 36 27% 81%;
+    --input: 36 27% 81%;
+    --ring: 40 48% 53%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --logo-purple: 290 67% 50%;
   }
 }
 
@@ -43,6 +44,7 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -57,8 +59,25 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1;
+  }
+  
+  .text-logo-purple {
+    color: hsl(var(--logo-purple));
+  }
+  
+  .bg-logo-purple {
+    background-color: hsl(var(--logo-purple));
+  }
+  
+  .border-logo-purple {
+    border-color: hsl(var(--logo-purple));
+  }
+  
+  .hover-logo-purple:hover {
+    background-color: hsl(var(--logo-purple));
+    color: white;
   }
 }

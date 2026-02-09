@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Cormorant Garamond', 'serif'],
-        body: ['Manrope', 'sans-serif'],
+        heading: ['Playfair Display', 'serif'],
+        body: ['Poppins', 'sans-serif'],
         accent: ['Great Vibes', 'cursive']
       },
       borderRadius: {
@@ -54,6 +54,27 @@ module.exports = {
           3: 'hsl(var(--chart-3))',
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))'
+        },
+        'logo-purple': 'hsl(var(--logo-purple))'
+      },
+      animation: {
+        'fade-in-up': 'fadeInUp 1s ease-out',
+        'fade-in': 'fadeIn 0.8s ease-out'
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' }
         }
       }
     }
