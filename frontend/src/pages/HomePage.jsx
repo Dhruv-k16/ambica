@@ -115,7 +115,7 @@ const HomePage = () => {
                 <Button
                   data-testid="hero-cta-primary"
                   size="lg"
-                  className="rounded-full bg-primary text-white hover-logo-purple shadow-lg hover:shadow-2xl transition-all duration-300 px-8 py-6 text-base font-semibold group"
+                  className="rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-2xl transition-all duration-300 px-8 py-6 text-base font-semibold group"
                 >
                   {pageContent.cta_primary}
                   <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" size={20} />
@@ -126,7 +126,7 @@ const HomePage = () => {
                   data-testid="hero-cta-secondary"
                   variant="outline"
                   size="lg"
-                  className="rounded-full border-2 border-primary text-primary hover:bg-logo-purple hover:text-white hover:border-logo-purple transition-all duration-300 px-8 py-6 text-base font-semibold"
+                  className="rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 px-8 py-6 text-base font-semibold"
                 >
                   {pageContent.cta_secondary}
                 </Button>
