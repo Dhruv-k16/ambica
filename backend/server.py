@@ -17,6 +17,7 @@ import cloudinary
 import cloudinary.utils
 import asyncio
 import resend
+from fastapi.middleware.cors import CORSMiddleware
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -434,7 +435,10 @@ app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+       allow_origins=[
+        "https://ambica-sigma.vercel.app",
+        "http://localhost:3000"
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
