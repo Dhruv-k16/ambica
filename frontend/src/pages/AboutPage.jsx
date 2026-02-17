@@ -74,7 +74,7 @@ const AboutPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-4xl mx-auto space-y-6"
           >
-            {pageContent.paragraphs.map((paragraph, index) => (
+            {pageContent?.paragraphs?.map((paragraph, index) => (
               <p
                 key={index}
                 className="text-base md:text-lg leading-relaxed text-muted-foreground text-center"
