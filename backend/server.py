@@ -448,7 +448,8 @@ app.add_middleware(
     allow_credentials=True,
     allow_origins=[
         "https://ambica-sigma.vercel.app",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "http://localhost:5173"
     ],
     allow_methods=["*"],
     allow_headers=["*"],
