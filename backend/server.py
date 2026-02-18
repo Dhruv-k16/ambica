@@ -211,21 +211,33 @@ async def send_email_notification(recipient_email: str, subject: str, html_conte
 # Authentication Routes
 @api_router.post("/auth/register", response_model=AdminResponse)
 async def register_admin(admin_data: AdminCreate):
-    """Register new admin (should be protected in production)"""
-    existing_admin = await db.admins.find_one({"email": admin_data.email}, {"_id": 0})
-    if existing_admin:
-        raise HTTPException(status_code=400, detail="Admin already exists")
-    
+    """Register first admin only (disabled after one admin exists)"""
+
+    # Check if any admin already exists
+    existing_count = await db.admins.count_documents({})
+
+    if existing_count > 0:
+        raise HTTPException(
+            status_code=403,
+            detail="Admin registration is disabled"
+        )
+
     hashed_password = hash_password(admin_data.password)
+
     admin_doc = {
         "email": admin_data.email,
         "password": hashed_password,
         "name": admin_data.name,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
-    
+
     await db.admins.insert_one(admin_doc)
-    return AdminResponse(email=admin_data.email, name=admin_data.name)
+
+    return AdminResponse(
+        email=admin_data.email,
+        name=admin_data.name
+    )
+
 
 @api_router.post("/auth/login", response_model=TokenResponse)
 async def login_admin(login_data: AdminLogin):
