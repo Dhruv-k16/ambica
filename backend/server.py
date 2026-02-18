@@ -458,3 +458,8 @@ app.add_middleware(
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+
+@api_router.post("/services", response_model=Service)
+async def create_service(service_data: Service, admin: dict = Depends(get_current_admin)):
+    await db.services.insert_one(service_data.model_dump())
+    return service_data
