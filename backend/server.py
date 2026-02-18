@@ -407,7 +407,7 @@ async def generate_cloudinary_signature(
     params = {
         "timestamp": timestamp,
         "folder": folder,
-        "resource_type": resource_type
+        
     }
     
     signature = cloudinary.utils.api_sign_request(
@@ -421,7 +421,6 @@ async def generate_cloudinary_signature(
         cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
         api_key=os.getenv("CLOUDINARY_API_KEY"),
         folder=folder,
-        resource_type=resource_type
     )
 
 # Settings Routes
