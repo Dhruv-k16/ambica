@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import api from '@/lib/api';
 
 const AboutPage = () => {
-  const [content, setContent] = useState(null);
+  const [content, setContent] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -47,7 +47,11 @@ const AboutPage = () => {
     ]
   };
 
-  const pageContent = content || defaultContent;
+  const pageContent =
+  content && Object.keys(content).length > 0
+    ? content
+    : defaultContent;
+
 
   return (
     <div data-testid="about-page">
@@ -98,7 +102,7 @@ const AboutPage = () => {
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pageContent.values.map((value, index) => {
+            {pageContent?.values?.map((value, index) => {
               const icons = [Heart, Award, Users];
               const Icon = icons[index % icons.length];
               
