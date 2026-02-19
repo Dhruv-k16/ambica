@@ -398,29 +398,29 @@ async def update_content(section_name: str, content_data: ContentUpdate, admin: 
 # Cloudinary Routes
 @api_router.get("/cloudinary/signature", response_model=CloudinarySignatureResponse)
 async def generate_cloudinary_signature(
-    resource_type: str = Query("image", regex="^(image|video)$"),
+    resource_type: str = Query("image", pattern="^(image|video)$"),
     folder: str = "ambica-wedding",
     admin: dict = Depends(get_current_admin)
 ):
-    """Generate Cloudinary upload signature (admin only)"""
     timestamp = int(time.time())
+
     params = {
         "timestamp": timestamp,
         "folder": folder,
-        
     }
-    
+
     signature = cloudinary.utils.api_sign_request(
         params,
         os.getenv("CLOUDINARY_API_SECRET")
     )
-    
+
     return CloudinarySignatureResponse(
         signature=signature,
         timestamp=timestamp,
         cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
         api_key=os.getenv("CLOUDINARY_API_KEY"),
         folder=folder,
+        resource_type=resource_type   # ← THIS WAS MISSING
     )
 
 # Settings Routes
