@@ -21,17 +21,16 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('admin_token');
       localStorage.removeItem('admin_user');
-      if (window.location.pathname.startsWith('/admin') && window.location.pathname !== '/admin/login') {
+
+      if (
+        window.location.pathname.startsWith('/admin') &&
+        window.location.pathname !== '/admin/login'
+      ) {
         window.location.href = '/admin/login';
       }
     }
     return Promise.reject(error);
   }
 );
-
-print("Cloud Name:", os.getenv("CLOUDINARY_CLOUD_NAME"))
-print("API Key:", os.getenv("CLOUDINARY_API_KEY"))
-print("Secret Loaded:", bool(os.getenv("CLOUDINARY_API_SECRET")))
-
 
 export default api;
