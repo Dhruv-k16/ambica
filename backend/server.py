@@ -321,6 +321,13 @@ async def update_service(service_id: str, service_data: ServiceUpdate, admin: di
     
     return Service(**service)
 
+@api_router.post("/services", response_model=Service)
+async def create_service(service_data: Service, admin: dict = Depends(get_current_admin)):
+    service_obj = Service(**service_data.model_dump())
+    await db.services.insert_one(service_obj.model_dump())
+    return service_obj
+
+
 # Enquiry Routes
 @api_router.post("/enquiries", response_model=Enquiry)
 async def create_enquiry(enquiry_data: EnquiryCreate):
