@@ -8,6 +8,7 @@ import api from '@/lib/api';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useRef } from 'react';
+import { useCallback } from 'react';
 
 const ShowcasePage = () => {
   const [events, setEvents] = useState([]);
@@ -40,7 +41,7 @@ const ShowcasePage = () => {
       nextImage();
     }, 4000);
     return () => clearInterval(interval);
-  }, [isGalleryOpen, selectedEvent]);
+  }, [isGalleryOpen, nextImage]);
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -53,7 +54,7 @@ const ShowcasePage = () => {
 
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [isGalleryOpen, selectedEvent]);
+  }, [isGalleryOpen, nextImage, prevImage]);
 
   const categories = [
     'all',
@@ -75,19 +76,18 @@ const ShowcasePage = () => {
     setIsGalleryOpen(true);
   };
 
-  const nextImage = () => {
-    if (!selectedEvent) return;
-    setCurrentIndex((prev) =>
+  const nextImage = useCallback(() => {
+    setCurrentImage((prev) =>
       prev === selectedEvent.images.length - 1 ? 0 : prev + 1
     );
-  };
+  }, [selectedEvent]);
 
-  const prevImage = () => {
-    if (!selectedEvent) return;
-    setCurrentIndex((prev) =>
+  const prevImage = useCallback(() => {
+    setCurrentImage((prev) =>
       prev === 0 ? selectedEvent.images.length - 1 : prev - 1
     );
-  };
+  }, [selectedEvent]);
+
 
 
   const handleTouchStart = (e) => {
@@ -264,8 +264,8 @@ const ShowcasePage = () => {
                   <div
                     key={index}
                     className={`w-3 h-3 rounded-full transition-all ${index === currentIndex
-                        ? 'bg-white scale-125'
-                        : 'bg-gray-500'
+                      ? 'bg-white scale-125'
+                      : 'bg-gray-500'
                       }`}
                   />
                 ))}
