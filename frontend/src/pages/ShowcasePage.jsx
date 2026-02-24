@@ -5,13 +5,20 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import api from '@/lib/api';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { useRef } from 'react';
 
 const ShowcasePage = () => {
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
-
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -27,6 +34,27 @@ const ShowcasePage = () => {
     fetchEvents();
   }, []);
 
+  useEffect(() => {
+    if (!isGalleryOpen) return;
+    const interval = setInterval(() => {
+      nextImage();
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isGalleryOpen, selectedEvent]);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (!isGalleryOpen) return;
+
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'Escape') setIsGalleryOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [isGalleryOpen, selectedEvent]);
+
   const categories = [
     'all',
     ...new Set(events.map((event) => event.category))
@@ -40,6 +68,44 @@ const ShowcasePage = () => {
       setFilteredEvents(events.filter((event) => event.category === category));
     }
   };
+
+  const openGallery = (event) => {
+    setSelectedEvent(event);
+    setCurrentIndex(0);
+    setIsGalleryOpen(true);
+  };
+
+  const nextImage = () => {
+    if (!selectedEvent) return;
+    setCurrentIndex((prev) =>
+      prev === selectedEvent.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    if (!selectedEvent) return;
+    setCurrentIndex((prev) =>
+      prev === 0 ? selectedEvent.images.length - 1 : prev - 1
+    );
+  };
+
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = (e) => {
+    touchEndX.current = e.changedTouches[0].screenX;
+
+    if (touchStartX.current - touchEndX.current > 50) {
+      nextImage();
+    }
+
+    if (touchEndX.current - touchStartX.current > 50) {
+      prevImage();
+    }
+  };
+
 
   return (
     <div data-testid="showcase-page">
@@ -75,11 +141,10 @@ const ShowcasePage = () => {
                 data-testid={`filter-${category}`}
                 onClick={() => handleFilter(category)}
                 variant={selectedCategory === category ? 'default' : 'outline'}
-                className={`rounded-full transition-all duration-200 ${
-                  selectedCategory === category
-                    ? 'bg-primary text-white shadow-md'
-                    : 'border-border hover:border-primary hover:text-primary'
-                }`}
+                className={`rounded-full transition-all duration-200 ${selectedCategory === category
+                  ? 'bg-primary text-white shadow-md'
+                  : 'border-border hover:border-primary hover:text-primary'
+                  }`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </Button>
@@ -117,9 +182,9 @@ const ShowcasePage = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <div className="mb-2">
                       <span className="text-xs font-medium bg-primary/80 px-3 py-1 rounded-full">
@@ -135,9 +200,12 @@ const ShowcasePage = () => {
 
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
-                      <span className="text-xs font-medium text-primary px-2">
+                      <button
+                        onClick={() => openGallery(event)}
+                        className="text-xs font-medium text-primary px-2 hover:underline"
+                      >
                         {event.images.length} photos
-                      </span>
+                      </button>
                     </div>
                   </div>
                 </motion.div>
@@ -147,6 +215,65 @@ const ShowcasePage = () => {
         </div>
       </section>
 
+      <Dialog open={isGalleryOpen} onOpenChange={setIsGalleryOpen}>
+        <DialogContent className="max-w-5xl p-0 bg-black border-none">
+          {selectedEvent && (
+            <div
+              className="relative w-full h-[85vh] flex items-center justify-center overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Close */}
+              <button
+                onClick={() => setIsGalleryOpen(false)}
+                className="absolute top-4 right-4 text-white z-20"
+              >
+                <X size={28} />
+              </button>
+
+              {/* Left Arrow */}
+              <button
+                onClick={prevImage}
+                className="absolute left-6 text-white z-20"
+              >
+                <ChevronLeft size={42} />
+              </button>
+
+              {/* Fade Animated Image */}
+              <motion.img
+                key={currentIndex}
+                src={selectedEvent.images[currentIndex]}
+                alt="Gallery"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-105"
+              />
+
+              {/* Right Arrow */}
+              <button
+                onClick={nextImage}
+                className="absolute right-6 text-white z-20"
+              >
+                <ChevronRight size={42} />
+              </button>
+
+              {/* Dots */}
+              <div className="absolute bottom-6 flex space-x-2">
+                {selectedEvent.images.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-3 h-3 rounded-full transition-all ${index === currentIndex
+                        ? 'bg-white scale-125'
+                        : 'bg-gray-500'
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
       <Footer />
     </div>
   );
