@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL =
+  process.env.REACT_APP_BACKEND_URL || 'https://ambica-qk7i.onrender.com';
+
 const API = `${BACKEND_URL}/api`;
 
 const api = axios.create({
@@ -29,6 +31,7 @@ api.interceptors.response.use(
         window.location.href = '/admin/login';
       }
     }
+
     return Promise.reject(error);
   }
 );
